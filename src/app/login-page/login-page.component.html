@@ -1,29 +1,108 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-  <div *ngIf="error">{{ error }}</div>
-  <input type="text" placeholder="Username" formControlName="username" />
-  <div
-    *ngIf="
-      loginForm.get('username')?.hasError('required') &&
-      (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)
-    "
-  >
-    <div *ngIf="loginForm.get('username')?.errors?.['required']">
-      Username is required.
+<div class="flex w-screen h-screen items-center justify-center bg-gray-200">
+  <div class="w-[450px] h-350px bg-white rounded-lg">
+    <div class="bg-white p-10 relative">
+      <h3 class="text-xl mb-6 font-bold">Sign in to Yale School of Art</h3>
+      <!-- <span
+        class="absolute top-[-10px] right-[-10px] bg-black text-white leading-none flex items-center justify-center w-10 h-10 cursor-pointer"
+      >
+        <i class="iconoir-cancel text-2xl"></i>
+      </span> -->
+      <form
+        class="flex flex-col gap-4"
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+        action=""
+      >
+        <div *ngIf="error">{{ error }}</div>
+        <input
+          class="w-full h-14 bg-[#E9E9E9] outline-none px-4"
+          placeholder="Username"
+          formControlName="username"
+          type="text"
+        />
+        <div
+          *ngIf="
+            loginForm.get('username')?.hasError('required') &&
+            (loginForm.get('username')?.dirty ||
+              loginForm.get('username')?.touched)
+          "
+          class="leading-5 mb-3"
+        >
+          <p *ngIf="loginForm.get('username')?.errors?.['required']">
+            Username is required.
+          </p>
+        </div>
+        <input
+          class="w-full h-14 bg-[#E9E9E9] outline-none px-4"
+          placeholder="Password"
+          formControlName="password"
+          type="password"
+        />
+        <div
+          *ngIf="
+            loginForm.get('password')?.hasError('required') &&
+            (loginForm.get('password')?.dirty ||
+              loginForm.get('password')?.touched)
+          "
+        >
+          <p *ngIf="loginForm.get('password')?.errors?.['required']">
+            Password is required.
+          </p>
+        </div>
+        <!-- <a
+          class="group/btn border border-black h-[60px] w-full gap-3 px-8 flex items-center justify-center font-bold transition-all duration-300 bg-black text-white"
+          href=""
+          ><span>Sign in</span>
+          <i
+            class="iconoir-arrow-right text-2xl group-hover/btn:ml-4 transition-all duration-300"
+          ></i
+        ></a> -->
+        <button
+          type="submit"
+          class="group/btn border border-black h-[60px] w-full gap-3 px-8 flex items-center justify-center font-bold transition-all duration-300 bg-black text-white"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+          <i
+            class="iconoir-arrow-right text-2xl group-hover/btn:ml-4 transition-all duration-300"
+          ></i>
+        </button>
+      </form>
     </div>
+    <!-- <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div *ngIf="error">{{ error }}</div>
+      <input type="text" placeholder="Username" formControlName="username" />
+      <div
+        *ngIf="
+          loginForm.get('username')?.hasError('required') &&
+          (loginForm.get('username')?.dirty ||
+            loginForm.get('username')?.touched)
+        "
+      >
+        <div *ngIf="loginForm.get('username')?.errors?.['required']">
+          Username is required.
+        </div>
+      </div>
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          loginForm.get('password')?.hasError('required') &&
+          (loginForm.get('password')?.dirty ||
+            loginForm.get('password')?.touched)
+        "
+      >
+        <div *ngIf="loginForm.get('password')?.errors?.['required']">
+          Password is required.
+        </div>
+      </div>
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </form> -->
   </div>
-  <input type="password" placeholder="Password" formControlName="password" />
-  <div
-    *ngIf="
-      loginForm.get('password')?.hasError('required') &&
-      (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)
-    "
-  >
-    <div *ngIf="loginForm.get('password')?.errors?.['required']">
-      Password is required.
-    </div>
-  </div>
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
-</form>
+</div>
 <!-- <p>
   kminchelle
   0lelplR
