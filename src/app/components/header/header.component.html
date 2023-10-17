@@ -7,26 +7,9 @@
     </div>
     <nav class="hidden lg:block">
       <ul class="flex items-center gap-4">
-        <li>
-          <a class="text-sm underline" href="./index.html">Home</a>
-        </li>
-        <li>
-          <a class="text-sm" href="./about.html">About</a>
-        </li>
-        <li>
-          <a class="text-sm" href="./apply.html">Apply</a>
-        </li>
-        <li>
-          <a class="text-sm" href="./exhibitions.html">Exhibitions</a>
-        </li>
-        <li>
-          <a class="text-sm" href="./publications.html">Publications</a>
-        </li>
-        <li>
-          <a class="text-sm" href="./news.html">News</a>
-        </li>
-        <li>
-          <a class="text-sm" href="./events.html">Events</a>
+
+        <li *ngFor="let link of linkData">
+          <a class="text-sm" [routerLink]="link.url" routerLinkActive="underline">{{ link.name }}</a>
         </li>
       </ul>
     </nav>

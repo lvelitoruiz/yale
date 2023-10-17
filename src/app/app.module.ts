@@ -39,11 +39,24 @@ import { PublicationsComponent } from './publications/publications.component';
 import { HeroExhibitionsComponent } from './components/hero-exhibitions/hero-exhibitions.component';
 import { SecondThoughtComponent } from './components/second-thought/second-thought.component';
 import { SoaFacultyComponent } from './components/soa-faculty/soa-faculty.component';
+import { HeroApplyComponent } from './components/hero-apply/hero-apply.component';
+import { ContentApplyComponent } from './components/content-apply/content-apply.component';
+import { ContentExhibitionsComponent } from './components/content-exhibitions/content-exhibitions.component';
+import { PrintPublicationsComponent } from './components/print-publications/print-publications.component';
+import { ArtCommencementComponent } from './components/art-commencement/art-commencement.component';
+import { ContentPublicationsComponent } from './components/content-publications/content-publications.component';
+import { ContentNewsComponent } from './components/content-news/content-news.component';
+import { menuReducer } from './reducers/menu.reducers';
+import { MenuEffects } from './effects/menu.effects';
+import { presentationReducer } from './reducers/presentacion.reducer';
+import { PresentationEffects } from './effects/presentation.effects';
+import { directionReducer } from './reducers/direction.reducer';
+import { DirectionEffects } from './effects/direction.effects';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
 ): ActionReducer<any> {
-  return localStorageSync({ keys: ['auth'], rehydrate: true })(reducer);
+  return localStorageSync({ keys: ['auth','menu','presentation','direction'], rehydrate: true })(reducer);
 }
 
 @NgModule({
@@ -78,12 +91,19 @@ export function localStorageSyncReducer(
     HeroExhibitionsComponent,
     SecondThoughtComponent,
     SoaFacultyComponent,
+    HeroApplyComponent,
+    ContentApplyComponent,
+    ContentExhibitionsComponent,
+    PrintPublicationsComponent,
+    ArtCommencementComponent,
+    ContentPublicationsComponent,
+    ContentNewsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(
-      { auth: authReducer },
+      { auth: authReducer, menu: menuReducer, presentation: presentationReducer, direction: directionReducer },
       {
         metaReducers: [localStorageSyncReducer],
         runtimeChecks: {
@@ -92,7 +112,7 @@ export function localStorageSyncReducer(
         },
       }
     ),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects,MenuEffects,PresentationEffects,DirectionEffects]),
     ReactiveFormsModule,
   ],
   providers: [],
