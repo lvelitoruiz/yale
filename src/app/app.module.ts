@@ -21,6 +21,24 @@ import { HeroImageComponent } from './components/hero-image/hero-image.component
 import { HeroComponent } from './components/hero/hero.component';
 import { PublicEventComponent } from './components/public-event/public-event.component';
 import { HomeContentComponent } from './components/home-content/home-content.component';
+import { AboutComponent } from './about/about.component';
+import { HeroAboutComponent } from './components/hero-about/hero-about.component';
+import { SchoolArtComponent } from './components/school-art/school-art.component';
+import { AboutContentComponent } from './components/about-content/about-content.component';
+import { NewContentComponent } from './components/new-content/new-content.component';
+import { ArtsDegreeComponent } from './components/arts-degree/arts-degree.component';
+import { PublicLectureComponent } from './components/public-lecture/public-lecture.component';
+import { EventComponent } from './event/event.component';
+import { HeroEventComponent } from './components/hero-event/hero-event.component';
+import { EventContentComponent } from './components/event-content/event-content.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { ApplyComponent } from './apply/apply.component';
+import { ExhibitionsComponent } from './exhibitions/exhibitions.component';
+import { NewsComponent } from './news/news.component';
+import { PublicationsComponent } from './publications/publications.component';
+import { HeroExhibitionsComponent } from './components/hero-exhibitions/hero-exhibitions.component';
+import { SecondThoughtComponent } from './components/second-thought/second-thought.component';
+import { SoaFacultyComponent } from './components/soa-faculty/soa-faculty.component';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -42,6 +60,24 @@ export function localStorageSyncReducer(
     HeroComponent,
     PublicEventComponent,
     HomeContentComponent,
+    AboutComponent,
+    HeroAboutComponent,
+    SchoolArtComponent,
+    AboutContentComponent,
+    NewContentComponent,
+    ArtsDegreeComponent,
+    PublicLectureComponent,
+    EventComponent,
+    HeroEventComponent,
+    EventContentComponent,
+    SignInComponent,
+    ApplyComponent,
+    ExhibitionsComponent,
+    NewsComponent,
+    PublicationsComponent,
+    HeroExhibitionsComponent,
+    SecondThoughtComponent,
+    SoaFacultyComponent,
   ],
   imports: [
     BrowserModule,
