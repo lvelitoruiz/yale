@@ -57,11 +57,26 @@ import { publiceventReducer } from './reducers/publicevent.reducer';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { DragCompComponent } from './components/drag-comp/drag-comp.component';
+import { publicationReducer } from './reducers/publications.reducer';
+import { PublicationEffects } from './effects/publications.effects';
+
+import { MarkdownModule } from 'ngx-markdown';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
 ): ActionReducer<any> {
-  return localStorageSync({ keys: ['auth','menu','presentation','direction','images','publicevent'], rehydrate: true })(reducer);
+  return localStorageSync({
+    keys: [
+      'auth',
+      'menu',
+      'presentation',
+      'direction',
+      'images',
+      'publicevent',
+      'publications',
+    ],
+    rehydrate: true,
+  })(reducer);
 }
 
 @NgModule({
@@ -106,8 +121,17 @@ export function localStorageSyncReducer(
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MarkdownModule.forRoot(),
     StoreModule.forRoot(
-      { auth: authReducer, menu: menuReducer, presentation: presentationReducer, direction: directionReducer, images: imagesReducer, publicevent: publiceventReducer },
+      {
+        auth: authReducer,
+        menu: menuReducer,
+        presentation: presentationReducer,
+        direction: directionReducer,
+        images: imagesReducer,
+        publicevent: publiceventReducer,
+        publication: publicationReducer,
+      },
       {
         metaReducers: [localStorageSyncReducer],
         runtimeChecks: {
@@ -120,7 +144,15 @@ export function localStorageSyncReducer(
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
-    EffectsModule.forRoot([AuthEffects,MenuEffects,PresentationEffects,DirectionEffects,ImagesEffects,PublicEventEffects]),
+    EffectsModule.forRoot([
+      AuthEffects,
+      MenuEffects,
+      PresentationEffects,
+      DirectionEffects,
+      ImagesEffects,
+      PublicEventEffects,
+      PublicationEffects
+    ]),
     ReactiveFormsModule,
   ],
   providers: [],

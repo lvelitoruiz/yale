@@ -4,6 +4,7 @@ import { AuthState } from './reducers/auth.reducer'; // Import your AuthState in
 import { ImagesState } from './reducers/images.reducer';
 import { MenuState } from './reducers/menu.reducers';
 import { PresentationState } from './reducers/presentacion.reducer';
+import { PublicationState } from './reducers/publications.reducer';
 import { PubliceventState } from './reducers/publicevent.reducer';
 
 export interface AppState {
@@ -12,4 +13,5 @@ export interface AppState {
   presentation: PresentationState;
   images: ImagesState;
   publicevent: PubliceventState;
+  publication: PublicationState;
 }
