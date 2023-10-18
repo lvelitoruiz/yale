@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
 @layer components {
   body {
     font-family: "Comfortaa", cursive;

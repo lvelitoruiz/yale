@@ -54,6 +54,9 @@ import { imagesReducer } from './reducers/images.reducer';
 import { ImagesEffects } from './effects/images.effects';
 import { PublicEventEffects } from './effects/publicevent.effects';
 import { publiceventReducer } from './reducers/publicevent.reducer';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { DragCompComponent } from './components/drag-comp/drag-comp.component';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -98,6 +101,7 @@ export function localStorageSyncReducer(
     ArtCommencementComponent,
     ContentPublicationsComponent,
     ContentNewsComponent,
+    DragCompComponent,
   ],
   imports: [
     BrowserModule,
@@ -112,6 +116,10 @@ export function localStorageSyncReducer(
         },
       }
     ),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
     EffectsModule.forRoot([AuthEffects,MenuEffects,PresentationEffects,DirectionEffects,ImagesEffects,PublicEventEffects]),
     ReactiveFormsModule,
   ],
