@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import * as MenuActions from '../actions/menu.actions';
 import * as PresentationActions from '../actions/presentation.actions';
 import * as DirectionActions from '../actions/direction.actions';
+import * as ImagesActions from '../actions/images.actions';
 import { AppState } from '../app.state';
 
 @Component({
@@ -28,6 +29,7 @@ export class LoginPageComponent implements OnInit {
     this.store.dispatch(MenuActions.loadMenu());
     this.store.dispatch(PresentationActions.loadPresentation());
     this.store.dispatch(DirectionActions.loadDirection());
+    this.store.dispatch(ImagesActions.loadImages());
   }
 
   login(): void {

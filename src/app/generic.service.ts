@@ -12,7 +12,7 @@ export class GenericService {
   constructor() {}
 
   getdata(routeGot: string): Observable<any[]> {
-    const apiUrl = environment.apiUrl + routeGot;
+    const apiUrl = environment.apiUrl + routeGot + '?populate=*';
     return new Observable((observer) => {
       axios
         .get(apiUrl)

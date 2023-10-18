@@ -31,13 +31,11 @@ import { PublicLectureComponent } from './components/public-lecture/public-lectu
 import { EventComponent } from './event/event.component';
 import { HeroEventComponent } from './components/hero-event/hero-event.component';
 import { EventContentComponent } from './components/event-content/event-content.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ApplyComponent } from './apply/apply.component';
 import { ExhibitionsComponent } from './exhibitions/exhibitions.component';
 import { NewsComponent } from './news/news.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { HeroExhibitionsComponent } from './components/hero-exhibitions/hero-exhibitions.component';
-import { SecondThoughtComponent } from './components/second-thought/second-thought.component';
 import { SoaFacultyComponent } from './components/soa-faculty/soa-faculty.component';
 import { HeroApplyComponent } from './components/hero-apply/hero-apply.component';
 import { ContentApplyComponent } from './components/content-apply/content-apply.component';
@@ -52,11 +50,15 @@ import { presentationReducer } from './reducers/presentacion.reducer';
 import { PresentationEffects } from './effects/presentation.effects';
 import { directionReducer } from './reducers/direction.reducer';
 import { DirectionEffects } from './effects/direction.effects';
+import { imagesReducer } from './reducers/images.reducer';
+import { ImagesEffects } from './effects/images.effects';
+import { PublicEventEffects } from './effects/publicevent.effects';
+import { publiceventReducer } from './reducers/publicevent.reducer';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
 ): ActionReducer<any> {
-  return localStorageSync({ keys: ['auth','menu','presentation','direction'], rehydrate: true })(reducer);
+  return localStorageSync({ keys: ['auth','menu','presentation','direction','images','publicevent'], rehydrate: true })(reducer);
 }
 
 @NgModule({
@@ -83,13 +85,11 @@ export function localStorageSyncReducer(
     EventComponent,
     HeroEventComponent,
     EventContentComponent,
-    SignInComponent,
     ApplyComponent,
     ExhibitionsComponent,
     NewsComponent,
     PublicationsComponent,
     HeroExhibitionsComponent,
-    SecondThoughtComponent,
     SoaFacultyComponent,
     HeroApplyComponent,
     ContentApplyComponent,
@@ -103,7 +103,7 @@ export function localStorageSyncReducer(
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(
-      { auth: authReducer, menu: menuReducer, presentation: presentationReducer, direction: directionReducer },
+      { auth: authReducer, menu: menuReducer, presentation: presentationReducer, direction: directionReducer, images: imagesReducer, publicevent: publiceventReducer },
       {
         metaReducers: [localStorageSyncReducer],
         runtimeChecks: {
@@ -112,7 +112,7 @@ export function localStorageSyncReducer(
         },
       }
     ),
-    EffectsModule.forRoot([AuthEffects,MenuEffects,PresentationEffects,DirectionEffects]),
+    EffectsModule.forRoot([AuthEffects,MenuEffects,PresentationEffects,DirectionEffects,ImagesEffects,PublicEventEffects]),
     ReactiveFormsModule,
   ],
   providers: [],

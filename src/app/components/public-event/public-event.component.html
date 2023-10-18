@@ -6,15 +6,15 @@
     >
       <div class="w-full lg:w-4/12 flex flex-col justify-end items-start gap-5">
         <div class="flex flex-col">
-          <p class="text-white text-xl">Public Art Tour with Lindsey Mancini</p>
-          <p class="text-white opacity-60">Meeting in Crown St. Courtyard</p>
+          <p class="text-white text-xl">{{ event.title }}</p>
+          <p class="text-white opacity-60">{{ event.location }}</p>
           <p class="text-white opacity-60 pt-2">
-            Wednesday, October 11 - 1:30PM
+            {{ event.hour }}
           </p>
         </div>
         <a
           class="group/btn border border-black h-[60px] gap-3 px-8 flex items-center justify-center font-bold bg-white text-black transition duration-300"
-          href=""
+          [href]="event.link"
           ><span>MORE INFO</span>
           <i
             class="iconoir-arrow-right text-2xl group-hover/btn:ml-4 transition-all duration-300"
@@ -26,12 +26,12 @@
       >
         <img
           class="w-full lg:w-fit lg:h-[348px] group-hover:grayscale transition-all duration-300"
-          src="/assets/images/event-1.png"
+          [src]="event.picture.data.attributes.url"
           alt=""
         />
         <div class="bg-white px-4 py-2">
           <p class="text-[10px]">
-            Poster design by Darnell Henderson, Graphic Design MFA ‘24
+            {{ event.legend }}
           </p>
         </div>
       </div>
