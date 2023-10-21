@@ -25,7 +25,10 @@ export class AuthService {
       })
     ).pipe(
       map((response) => {
-        this.store.dispatch(AuthActions.loginSuccess());
+        console.log(response)
+        const serializedResponse = JSON.stringify(response.data);
+        console.log(serializedResponse)
+        this.store.dispatch(AuthActions.loginSuccess({response: serializedResponse}));
         return response; 
       }),
       catchError((error) => {

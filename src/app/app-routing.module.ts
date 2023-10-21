@@ -9,6 +9,7 @@ import { ApplyComponent } from './apply/apply.component';
 import { ExhibitionsComponent } from './exhibitions/exhibitions.component';
 import { NewsComponent } from './news/news.component';
 import { PublicationsComponent } from './publications/publications.component';
+import { InfoComponent } from './info/info.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'exhibitions', component: ExhibitionsComponent, canActivate: [AuthGuard] },
   { path: 'news', component: NewsComponent, canActivate: [AuthGuard] },
   { path: 'publications', component: PublicationsComponent, canActivate: [AuthGuard] },
+  { path: 'info', component: InfoComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect empty path to login
   { path: '**', redirectTo: '/login' } // Redirect unmatched routes to login
 ];

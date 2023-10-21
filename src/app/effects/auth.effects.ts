@@ -13,7 +13,7 @@ export class AuthEffects {
       ofType(AuthActions.login),
       mergeMap(action =>
         this.authService.login(action.username, action.password).pipe(
-          map(() => AuthActions.loginSuccess()),
+          map((response) => AuthActions.loginSuccess(response)),
           catchError(error => of(AuthActions.loginFailure({ error })))
         )
       )

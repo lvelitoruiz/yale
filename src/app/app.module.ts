@@ -61,6 +61,9 @@ import { publicationReducer } from './reducers/publications.reducer';
 import { PublicationEffects } from './effects/publications.effects';
 
 import { MarkdownModule } from 'ngx-markdown';
+import { InfoComponent } from './info/info.component';
+import { InfoContentComponent } from './components/info-content/info-content.component';
+import { HeroInfoComponent } from './components/hero-info/hero-info.component';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -117,6 +120,9 @@ export function localStorageSyncReducer(
     ContentPublicationsComponent,
     ContentNewsComponent,
     DragCompComponent,
+    InfoComponent,
+    InfoContentComponent,
+    HeroInfoComponent,
   ],
   imports: [
     BrowserModule,

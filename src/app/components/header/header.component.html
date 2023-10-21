@@ -7,9 +7,13 @@
     </div>
     <nav class="hidden lg:block">
       <ul class="flex items-center gap-4">
-
         <li *ngFor="let link of linkData">
-          <a class="text-sm" [routerLink]="link.url" routerLinkActive="underline">{{ link.name }}</a>
+          <a
+            class="text-sm"
+            [routerLink]="link.url"
+            routerLinkActive="underline"
+            >{{ link.name }}</a
+          >
         </li>
       </ul>
     </nav>
@@ -24,6 +28,48 @@
         href=""
         ><span>Edit this page</span></a
       >
+      <div class="relative h-full cursor-pointer">
+        <div class="flex items-center">
+          <div
+            class="rounded-full overflow-hidden w-10 h-10 border-2 border-blue-300"
+          >
+            <img class="" [src]="userData.image" [alt]="userData.firstName" />
+          </div>
+          <div class="pl-3">
+            <div id="dropDownTrigger" (click)="toggleDropdown()">
+              <p class="text-norml">Welcome {{ userData.firstName }}!!</p>
+              <p class="text-xs text-gray-400 text-right">
+                {{ userData.email }}
+              </p>
+            </div>
+            <ul
+              id="dropDown"
+              class="text-xs min-w-[180px] text-gray-600 absolute text-right right-0 top-[60px] py-2 px-0 bg-white shadow-md border border-gray-500"
+              [class.hidden]="!isDropdownOpen"
+            >
+              <li class="px-4 py-2 mb-2 cursor-pointer hover:bg-blue-100">
+                Profile
+              </li>
+              <li class="px-4 py-2 mb-2 cursor-pointer hover:bg-blue-100">
+                Settings
+              </li>
+              <li
+                class="px-4 py-2 mb-2 cursor-pointer hover:bg-blue-100"
+                *ngIf="isAdmin"
+              >
+                Website Settings
+              </li>
+              <li
+                class="px-4 py-2 mb-2 cursor-pointer hover:bg-blue-100"
+                *ngIf="isAdmin"
+              >
+                Manage Users
+              </li>
+              <li class="px-4 py-2 cursor-pointer hover:bg-blue-100" (click)="logout()">LogOut</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </header>
